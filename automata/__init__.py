@@ -1,4 +1,4 @@
-
+from graphviz import Digraph
 
 """A class representing a finite automata.
 """
@@ -39,6 +39,21 @@ class Automata(object):
             if self._recognizes(word[1:], fitting_transition[2]):
                 return True
         return False 
+
+        def show(self):
+        dot = Digraph(strict=True)
+        dot.attr(rankdir='LR')
+        for start_state in self.start_states:
+            inv_node_name = 's' + start_state
+            dot.node(inv_node_name, style='invis')
+            dot.edge(inv_node_name, start_state)
+        for end_state in self.end_states:
+            dot.node(end_state, end_state, shape='doublecircle')
+        for state in self.states:
+            dot.node(state, state)
+        for transition in self.transitions:
+            dot.edge(transition[0], transition[2], transition[1])
+        return dot  
 
     # Operators
 
