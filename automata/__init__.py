@@ -41,7 +41,7 @@ class Automata(object):
         return False 
 
     def show(self):
-        dot = Digraph(strict=True)
+        dot = Digraph()
         dot.attr(rankdir='LR')
         for start_state in self.start_states:
             inv_node_name = 's' + start_state
