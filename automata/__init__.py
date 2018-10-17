@@ -40,7 +40,7 @@ class Automata(object):
                 return True
         return False 
 
-        def show(self):
+    def show(self):
         dot = Digraph(strict=True)
         dot.attr(rankdir='LR')
         for start_state in self.start_states:
